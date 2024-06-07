@@ -1,6 +1,10 @@
 import React, {Component, useEffect, useState} from 'react';
 
 
+// this component will be used to make different inputs via radio buttons
+
+// we need to save the user's selection from this component. and make it back to our parent component. coffee form
+
 // set up different blocks of answer choices for each list in ingredients
 const RecipeChoices = ({handleChange, label, choices, checked}) =>{
 

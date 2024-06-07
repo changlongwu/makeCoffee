@@ -37,9 +37,9 @@ const CoffeeForm = () =>{
     }
     const onNewDrink = ()=>{
         setCheckedTemperature('');
-        setCheckedSyrup('');
+        // setCheckedSyrup('');
         setCheckedMilk('');
-        setCheckedBlended('');
+        // setCheckedBlended('');
 
         setInputs({
             'temperature': '',
@@ -70,7 +70,7 @@ const CoffeeForm = () =>{
 
     return (
         <div className="CoffeForm">
-            <h2>Hi, I'd like to order a:</h2>
+            <h2 className="order-text">Hi, I'd like to order a:</h2>
 
             <div className="drink-container">
                 <h2 className="mini-header">{currentDrink}</h2>
@@ -80,46 +80,46 @@ const CoffeeForm = () =>{
                 onClick={onNewDrink}>🔄</button>
             </div>
 
-            <h3>Temperature</h3>
-            <div className="answer-space">
-                {inputs['temperature']}
-            </div>
-            <RecipeChoices 
-            handleChange={(e)=>setInputs((prevState)=>({...prevState, [e.target.name]: e.target.value}))}
-            label='temperature'
-            choices={ingredients['temperature']}
-            checked={inputs['temperature']}
-            />
 
-            <h3>Milk</h3>
-            <div className="answer-space">
-                {inputs['milk']}
-            </div>
-            <RecipeChoices 
-            // e is short for event
-            // e.target : the element (html) that triggered the event
-            // e.target.name=  the name attribute of the input field
-            // e.target.value: the value of the input field
-            handleChange={(e)=>setInputs((prevState)=>({...prevState, [e.target.name]: e.target.value}))}
-            label='milk'
-            choices={ingredients['milk']}
-            checked={inputs['milk']}
-            />
+            <form className="container">
+                <div className="mini-container">
+                    <h3>Temperature</h3>
+                    <div className="answer-space" id={correct_temp}>
+                        {inputs['temperature']}
+                    </div>
+                    <RecipeChoices 
+                    handleChange={(e)=>setInputs((prevState)=>({...prevState, [e.target.name]: e.target.value}))}
+                    label='temperature'
+                    choices={ingredients['temperature']}
+                    checked={inputs['temperature']}
+                    />
+                </div>
 
-
-
-
-            <form action="">
-
+                <div className="mini-container">
+                    <h3>Milk</h3>
+                    <div className="answer-space" id={correct_milk}>
+                        {inputs['milk']}
+                    </div>
+                    <RecipeChoices 
+                    // e is short for event
+                    // e.target : the element (html) that triggered the event
+                    // e.target.name=  the name attribute of the input field
+                    // e.target.value: the value of the input field
+                    handleChange={(e)=>setInputs((prevState)=>({...prevState, [e.target.name]: e.target.value}))}
+                    label='milk'
+                    choices={ingredients['milk']}
+                    checked={inputs['milk']}
+                    />
+                </div>
             </form>
 
             <button type="submit" className="button submit" onClick={onCheckAnswer}>
-                CheckAnswer
+                Check Answer
             </button>
 
-            <button type="new-drink-button" className="button submit" onClick={onNewDrink}>
+            {/* <button type="new-drink-button" className="button submit" onClick={onNewDrink}>
                 new Drink
-            </button>
+            </button> */}
         </div>
     )
 }
